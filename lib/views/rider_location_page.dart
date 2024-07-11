@@ -8,10 +8,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
 import 'package:uber_josh/common/color_manager.dart';
 import 'package:uber_josh/common/styles.dart';
 import 'package:uber_josh/common/text_content.dart';
-// import 'package:uber_josh/view_models/order_view_model.dart';
-// import 'package:uber_josh/view_models/user_view_model.dart';
+import 'package:uber_josh/view_models/order_view_model.dart';
+import 'package:uber_josh/view_models/user_view_model.dart';
 import 'package:uber_josh/views/pickup_page.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 import 'add_stop_page.dart';
 import 'request_page.dart';
 
@@ -238,10 +238,10 @@ class _RiderLocationPageState extends State<RiderLocationPage> with SingleTicker
     }
     // final orderViewModel = Provider.of<OrderViewModel>(context);
     print("================?${_destinationController.text}");
-    // context.read<OrderViewModel>().setStartLocation(_currentLocationController.text);
-    // context.read<OrderViewModel>().setEndLocation(_destinationController.text);
-    // context.read<OrderViewModel>().setStartAddress(_currentPosition as String);
-    // context.read<OrderViewModel>().setStopLocation(stops);
+    context.read<OrderViewModel>().setStartLocation(_currentLocationController.text);
+    context.read<OrderViewModel>().setEndLocation(_destinationController.text);
+    context.read<OrderViewModel>().setStartAddress(_currentPosition as String);
+    context.read<OrderViewModel>().setStopLocation(stops);
     
     // print(orderViewModel.order.startLocation);
     Navigator.push(
@@ -474,7 +474,7 @@ class _RiderLocationPageState extends State<RiderLocationPage> with SingleTicker
           if (_isLoading)
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Center(
+              child: const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
